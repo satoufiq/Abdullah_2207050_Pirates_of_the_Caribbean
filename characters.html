@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Legendary pirate archive of the Pirates of the Caribbean universe.">
+  <title>Legends of the Seven Seas | The Lost Compass</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English+SC&family=Pirata+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/characters.css?v=1.2">
+</head>
+<body>
+  <div class="loading-screen" id="loading-screen">
+    <img src="assets/images/home/compass-rose.png" alt="Loading compass" class="loading-compass">
+    <p class="loading-text">Opening the Pirate Archive...</p>
+  </div>
+
+  <div class="archive-overlay" aria-hidden="true"></div>
+
+      <nav>
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <img src="assets/images/home/compass-rose.png" alt="The Lost Compass" class="logo-compass">
+          <span class="logo-text">The Lost Compass</span>
+        </a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="Toggle navigation menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <ul class="nav-menu" id="primary-navigation">
+          <li><a href="index.html" class="nav-home">Home</a></li>
+          <li><a href="characters.html" class="nav-characters active" aria-current="page">Characters</a></li>
+          <li><a href="ships.html" class="nav-ships">Ships</a></li>
+          <li><a href="map.html" class="nav-map">Map</a></li>
+          <li><a href="missions.html" class="nav-missions">Missions</a></li>
+          <li><a href="relics.html" class="nav-relics">Relics</a></li>
+          <li><a href="rankings.html" class="nav-rankings">Rankings</a></li>
+          <li><a href="tavern.html" class="nav-tavern">Tavern</a></li>
+          <li><a href="profile.html" class="nav-profile">Profile</a></li>
+        </ul>
+        <div class="nav-auth-buttons" id="primary-auth-actions">
+          <a href="login.html" class="btn-auth login-btn" style="text-decoration: none; display: inline-block;">Login</a>
+          <a href="signup.html" class="btn-auth signup-btn" style="text-decoration: none; display: inline-block;">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+
+  <main>
+    <section class="hero-title-block">
+      <p class="kicker">Captain's Secret Record Book</p>
+      <h1>Legends of the Seven Seas</h1>
+      <p class="subtitle">Every pirate leaves a mark upon the ocean.</p>
+      <p class="intro-line">Wander the archive. Follow alliances, betrayals, and immortal rivalries carved into salt and smoke.</p>
+    </section>
+
+    <section class="control-panel" aria-label="Character search and category filters">
+      <div class="search-wrap">
+        <label for="character-search" class="sr-only">Search for a pirate</label>
+        <input id="character-search" type="search" placeholder="Search a pirate..." autocomplete="off">
+      </div>
+      <div class="filter-tabs" role="toolbar" aria-label="Character categories">
+        <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All Legends</button>
+        <button type="button" class="filter-btn" data-filter="captains" aria-pressed="false">Captains</button>
+        <button type="button" class="filter-btn" data-filter="allies" aria-pressed="false">Allies</button>
+        <button type="button" class="filter-btn" data-filter="villains" aria-pressed="false">Villains</button>
+        <button type="button" class="filter-btn" data-filter="legends" aria-pressed="false">Legends</button>
+      </div>
+      <p class="results-text" id="results-text">Showing 6 legendary records</p>
+    </section>
+
+    <section class="character-gallery" aria-label="Character gallery">
+      <div class="decor-rope" aria-hidden="true"></div>
+      <div class="decor-compass" aria-hidden="true">
+        <img src="assets/images/home/compass-rose.png" alt="">
+      </div>
+      <div class="decor-map-corner" aria-hidden="true"></div>
+
+      <div class="character-grid" id="character-grid"></div>
+    </section>
+  </main>
+
+  <section class="character-modal" id="character-modal" hidden>
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close character details">&times;</button>
+
+      <div class="modal-media">
+        <img id="modal-image" src="" alt="">
+      </div>
+
+      <div class="modal-content">
+        <p class="modal-record">Legendary Dossier</p>
+        <h2 id="modal-name"></h2>
+        <p class="modal-role" id="modal-role"></p>
+        <p class="modal-quote" id="modal-quote"></p>
+        <p class="modal-bio" id="modal-bio"></p>
+
+        <div class="detail-grid">
+          <div class="detail-item"><span class="label">Ship</span><span id="modal-ship"></span></div>
+          <div class="detail-item"><span class="label">Weapon</span><span id="modal-weapon"></span></div>
+          <div class="detail-item"><span class="label">First Appearance</span><span id="modal-appearance"></span></div>
+          <div class="detail-item"><span class="label">Category</span><span id="modal-category"></span></div>
+        </div>
+
+        <div class="relationship-block">
+          <div>
+            <h3>Allies</h3>
+            <div id="modal-allies" class="chip-list"></div>
+          </div>
+          <div>
+            <h3>Enemies</h3>
+            <div id="modal-enemies" class="chip-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/images/home/compass-rose.png" alt="The Lost Compass">
+        <p>The Lost Compass</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="characters.html">Characters</a></li>
+        <li><a href="quiz.html">Compass of Fate</a></li>
+      </ul>
+      <p class="copyright">&copy; <span id="footer-year"></span> The Lost Compass. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/characters.js?v=1.2"></script>
+</body>
+</html>
